@@ -1,33 +1,3 @@
 #pragma once
 #include <string>
-
-struct Config
-{
-    int toggleKey = 115;
-    int upKey = 38;
-    int downKey = 40;
-    int leftKey = 37;
-    int rightKey = 39;
-    int enterKey = 13;
-    int backKey = 8;
-
-    bool engineEnabled = true;
-    bool autoEvents = true;
-    int minDelayMs = 12000;
-    int maxDelayMs = 42000;
-    int intensity = 2;
-    int cooldownMs = 5000;
-
-    bool ambientAudio = true;
-    bool npcReactions = true;
-    bool vehicleReactions = true;
-    bool cameraEffects = true;
-    bool worldEffects = true;
-    bool notifications = false;
-
-    bool storyModeOnly = true;
-    float maxEventDistance = 45.0f;
-};
-
-Config& GetConfig();
-void LoadConfig();
+namespace Enchant { struct Config { bool enabled=true,autoEvents=true,ambientAudio=true,npcReactions=true,vehicleReactions=true,cameraEffects=true,worldEffects=true,notifications=false,storyModeOnly=true; int toggleKey=115,minDelayMs=12000,maxDelayMs=42000,cooldownMs=5000,intensity=2; float maxEventDistance=45.f; }; class ConfigManager { public: static Config& Get(); static void Load(const std::string& path); static void Save(const std::string& path); }; }
